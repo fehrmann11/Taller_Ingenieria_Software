@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editar Trabajador</title>
+
+<!--================================BOOTSTRAP Y LINKS =========================================-->
+	
+	<link rel="icon" type="image/png" href="../images/icons/icono.ico"/>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.css">
+<!--===============================================================================================-->
+
+</head>
+<body style= " background-image:url('../images/background2.png'); background-size: 100% 100%; background-attachment:fixed; ">
+  <div>
+    <h1 style="color: white; margin-left:26%; margin-top:5%;">Editar</h1>
+    <h1 style="color: white; margin-left:20%; margin-top:1%;">TRABAJADOR</h1>
+  </div>  
+  <div>
+        <form class="container-table100" style="margin-top: 5%">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label style="color: white;" for="inputEmail4">Nombre</label>
+                    <input id="Input_Nombre" type="text" class="form-control" placeholder="Ingrese el nombre">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label style="color: white;" for="inputPassword4">Apellido</label>
+                    <input id="Input_Apellido" type="text" class="form-control" placeholder="Ingrese el apellido">
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label style="color: white;" for="inputPassword4">Rut</label>
+                    <input id="Input_Rut" type="text" class="form-control" placeholder="Ingrese el rut">
+                    <small style="color: white;" id="passwordHelpBlock" class="form-text text-muted">
+                        El ingreso del rut debe ser de la siguiente forma, Ejemplo: 19.351.144-9
+                      </small>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label style="color: white;"  for="inputState">Area</label>
+                    <select id="Input_Area" class="form-control">
+                      <option style="color: thistle" selected>Elige un Area...</option>
+                      <option>Pajero</option>
+                      <option>Extractor de leche</option>
+                      <option>Tractorista</option>
+                      <option>Farmero de oro</option>
+                    </select>
+                  </div>
+                </div>
+                <button style='margin-left:25%; margin-top:2%' type="submit" class="btn btn-success">Guardar</button>
+                <button style='margin-left:15%; margin-top:2%' id="salir" type="submit" class="btn btn-danger">Cerrar</button>
+              </form>
+        </div>
+
+<script>
+
+    const { electron } = require('electron');
+	const { ipcRenderer } = require('electron');
+	const { format } = require('date-fns');
+    const boton1 = document.querySelector('#salir')
+
+    const enviar = () =>{
+    let dato = "Hacer conexion con index";
+    ipcRenderer.send('salir',dato);
+    }
+
+boton1.addEventListener('click',enviar);
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Agregar Trabajador</title>
+
+<!--================================BOOTSTRAP Y LINKS =========================================-->
+	
+	<link rel="icon" type="image/png" href="../images/icons/icono.ico"/>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.css">
+<!--===============================================================================================-->
+
+</head>
+<body style= " background-image:url('../images/background3.png'); background-size: 100% 100%; background-attachment:fixed; ">
+  <div>
+
+<!--=============================== CCREACION DE FORMULARIO =============================================-->
+
+
+    <h4  style="color: rgb(34, 34, 34); margin-left:22%; margin-top:6%; font-family:Vedur; font-style: bold; ">AGREGAR TRABAJADOR</h1>
+  </div>  
+  <div>
+        <form class="container-table100" style="margin-top: 3%">
+
+                <div class="form-row">
+                  <div  class="form-group col-md-6">
+
+                    <label class="badge badge-pill badge-dark" style="color: white; width: 100%" for="inputEmail4">Nombre</label>
+                    <input id="Input_Nombre" type="text" class="form-control" placeholder="Ingrese el nombre">
+
+                  </div>
+
+
+                  <div style="margin-top: 3%;" class="form-group col-md-6">
+                    <label class="badge badge-pill badge-dark" style="color: white; width: 100%" for="inputPassword4">Apellido</label>
+                    <input id="Input_Apellido" type="text" class="form-control" placeholder="Ingrese el apellido">
+                  </div>
+
+
+                  <div  style="margin-top: 3%;" class="form-group col-md-6">
+                    <label class="badge badge-pill badge-dark" style="color: white; width: 100%" for="inputPassword4">Rut</label>
+                    <input id="Input_Rut" type="text" class="form-control" placeholder="Ingrese el rut">
+                    <h10  style="color: #747474; width: 100%" id="passwordHelpBlock" class="badge badge-pill badge-light">
+                        El ingreso del rut debe ser de la siguiente forma, ejemplo: 19.351.144-9
+                    </h10>
+                  </div>
+
+
+                  <div style="margin-top: 1%;" class="form-group col-md-6">
+                    <label class="badge badge-pill badge-dark" style="color: white; width: 100%"  for="inputState">Area</label>
+                    <select id="Input_Area" class="form-control">
+                      <option>Pajero</option>
+                      <option>Lechero</option>
+                      <option>Tractorista</option>
+                      <option>Farmero de oro</option>
+                    </select>
+                  </div>
+
+
+                  <div style="margin-left: 30%; size:150px; margin-top: 5px;" class="form-group col-md-6">
+                    <label class="badge badge-pill badge-dark" style="color: white; width: 60%" for="inputPassword4">Horas Exijidas Diarias</label>
+                    <input class="form-group" id="Input_Exijidas" type="number" name="quantity" placeholder="Ingrese la cantidad">
+                 </div>
+
+                 <div></div>
+              
+                </form>
+
+              <button style='margin-left:25%; margin-top:4%' id="guardar" class="btn btn-success">Guardar</button>
+              <button style='margin-left:15%; margin-top:4%' id="salir" class="btn btn-danger">Cerrar</button>
+
+        </div>
+
+<!--======================================================================================================================-->
+
+<!--=============================== SCRIPT PARA ENVIAR LO QUE SE ESCRIBE EN FORMULARIO ====================================-->
+<!--============================================= A INDEX.JS ==============================================================-->
+<script>
+
+    const { electron } = require('electron');
+	  const { ipcRenderer } = require('electron');
+    const { format } = require('date-fns');
+    
+    const boton1 = document.querySelector('#salir')
+    const boton2= document.querySelector('#guardar')
+
+    const enviar = () =>{
+    let dato = "Hacer conexion con index";
+    ipcRenderer.send('salir',dato);
+    }
+    
+    const enviar3 = () =>{
+      let dato = "Hacer conexion con index";
+      ipcRenderer.send('alertaxd',dato);
+    }
+    
+    const envia2 = () =>{
+
+    const nombreout = document.querySelector('#Input_Nombre');
+    const apellidoout = document.querySelector('#Input_Apellido');
+    const rutout = document.querySelector('#Input_Rut');
+    const areaout = document.querySelector('#Input_Area');
+    const exijidasout = document.querySelector('#Input_Exijidas');
+
+    const output = [
+      nombreout.value,
+      apellidoout.value,
+      rutout.value,
+      areaout.value,
+      exijidasout.value
+    ];
+
+    ipcRenderer.send('outputagrega',output);
+    }
+
+
+boton1.addEventListener('click',enviar);
+boton2.addEventListener('click',envia2);
+boton2.addEventListener('click',enviar3);
+
+</script>
+
+<!--==============================================================================================================-->
+
+</body>
+</html>

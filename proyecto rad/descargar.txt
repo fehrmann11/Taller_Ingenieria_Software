@@ -1,0 +1,5 @@
+npm init --yes
+npm install electron
+npm install mysql
+npm install date-fns
+npm install path

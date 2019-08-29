@@ -1,0 +1,26 @@
+{
+  "name": "Proyectorad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron . --disable-gpu",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.0.10"
+  },
+  "dependencies": {
+    "date-fns": "^2.3.0",
+    "electron-reload": "^1.5.0",
+    "jquery": "^3.4.1",
+    "mysql": "^2.17.1",
+    "path": "^0.12.7",
+    "sweetalert": "^2.1.2",
+    "toastr": "^2.1.4",
+    "util.js": "0.0.0"
+  }
+}
